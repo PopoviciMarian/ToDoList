@@ -42,7 +42,7 @@ public class TaskResouce {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteTask(@PathVariable Long id){
+    public ResponseEntity<?> deleteTask(@PathVariable("id") Long id){
         taskService.deleteTask(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
