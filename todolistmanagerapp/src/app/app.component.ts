@@ -45,7 +45,7 @@ export class AppComponent implements OnInit{
   
     task.description = string;
     task.title = "task";
-    
+    task.status = "TODO";
     console.log(task);
     
     this.taskService.addTask(task).subscribe(
@@ -58,5 +58,22 @@ export class AppComponent implements OnInit{
       }
     )
   }  
- 
+  
+  public checkTask(task : Task){
+    if(task.status == "DONE"){
+      task.status = "TODO";
+    }else{
+      task.status = "DONE";
+    }
+    this.taskService.updateTask(task).subscribe(
+      (response : Task) =>{
+        console.log(response);
+        //this.getTasks();
+      },
+      (error : HttpErrorResponse)=>{
+        alert(error.message);
+      }
+    )
+     
+  }
 }

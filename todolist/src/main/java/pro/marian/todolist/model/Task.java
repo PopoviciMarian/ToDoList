@@ -16,4 +16,7 @@ public class Task implements Serializable{
 
     private String title;
     private String description;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
 }

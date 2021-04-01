@@ -9,10 +9,12 @@
                         <div class="list-wrapper">
                             
                             <ul  *ngFor = "let task of tasks" class="d-flex flex-column-reverse todo-list">
-                                <li>
-                                    <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox"> {{task?.description}} <i class="input-helper"></i></label> </div> <i (click) = "deliteTask(task)" class="remove mdi mdi-close-circle-outline"></i>
+                                <li *ngIf = "task.status == 'TODO'  else elseBlock">
+                                    <div class="form-check"> <label  class="form-check-label"> <input  class="checkbox" (change)="checkTask(task)" type="checkbox"> {{task?.description}} <i class="input-helper"></i></label> </div> <i (click) = "deliteTask(task)" class="remove mdi mdi-close-circle-outline"></i>
                                 </li>
-                                
+                                <li *ngIf = "task.status == 'DONE'" class="completed">
+                                    <div class="form-check"> <label  class="form-check-label"> <input  class="checkbox " checked="" (change)="checkTask(task)" type="checkbox"> {{task?.description}} <i class="input-helper"></i></label> </div> <i (click) = "deliteTask(task)" class="remove mdi mdi-close-circle-outline"></i>
+                                </li>
                             </ul>
                         </div>
                     </div>
