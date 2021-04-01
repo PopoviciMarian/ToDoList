@@ -42,21 +42,22 @@ export class AppComponent implements OnInit{
 
   
   public addTask(task :Task, string: string):void{
-  
-    task.description = string;
-    task.title = "task";
-    task.status = "TODO";
-    console.log(task);
-    
-    this.taskService.addTask(task).subscribe(
-      (response : Task) =>{
-        console.log(response);
-        this.getTasks();
-      },
-      (error: HttpErrorResponse) =>{
-        alert(error.message);
-      }
-    )
+  if(string != ''){
+      task.description = string;
+      task.title = "task";
+      task.status = "TODO";
+      console.log(task);
+      
+      this.taskService.addTask(task).subscribe(
+        (response : Task) =>{
+          console.log(response);
+          this.getTasks();
+        },
+        (error: HttpErrorResponse) =>{
+          alert(error.message);
+        }
+      )
+    }
   }  
   
   public checkTask(task : Task){

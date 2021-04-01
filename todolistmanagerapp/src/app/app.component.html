@@ -5,7 +5,7 @@
                 <div class="card px-3">
                     <div class="card-body">
                         <h4 class="card-title">Awesome Todo list</h4>
-                        <div class="add-items d-flex"> <input #inputText type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> <button (click) = "addTask({}, inputText.value); inputText.value = ''" class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button> </div>
+                        <div class="add-items d-flex"> <input (keyup.enter)="addTask({}, inputText.value); inputText.value = ''" #inputText type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> <button (click) = "addTask({}, inputText.value); inputText.value = ''" class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button> </div>
                         <div class="list-wrapper">
                             
                             <ul  *ngFor = "let task of tasks" class="d-flex flex-column-reverse todo-list">
